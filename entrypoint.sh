@@ -1,6 +1,6 @@
 #!/bin/sh
-
-
+GAME_DIR = /home/steam/Steam/steamapps/common/VRisingDedicatedServer
+check_req_vars() {
 if [ -z "${V_RISING_NAME+}" ]; then
     echo "V_RISING_NAME has to be set"
 
@@ -18,9 +18,21 @@ if [ -z "${V_RISING_SAVE_NAME}" ]; then
 
     exit
 fi
+}
 
-envsubst /templates/ServerGameSettings.templ >> /home/steam/Steam/steamapps/common/VRisingDedicatedServer/VRisingServer_Data/StreamingAssets/Settings/ServerGameSettings.json &
+if [ -d "/var/settings" ]; then 
+    if [ -f "/var/settings/ServerGameSettings.json" ]; then
+        cp /var/settings/ServerGameSettings.json $GAME_DIR/VRisingServer_Data/StreamingAssets/Settings/ServerGameSettings.json
+    else
+        envsubst /templates/ServerGameSettings.templ >> $GAME_DIR/VRisingServer_Data/StreamingAssets/Settings/ServerGameSettings.json &
+    fi
 
-envsubst /templates/ServerHostSetting.templ >> /home/steam/Steam/steamapps/common/VRisingDedicatedServer/VRisingServer_Data/StreamingAssets/Settings/ServerHostSettings.json &
+    if [ -f "/var/settings/ServerHostSettings.json" ]; then
+        cp /var/settings/ServerHostSettings.json $GAME_DIR/VRisingServer_Data/StreamingAssets/Settings/ServerHostSettings.json
+    else
+        check_req_vars
+        envsubst /templates/ServerHostSetting.templ >> $GAME_DIR/VRisingServer_Data/StreamingAssets/Settings/ServerHostSettings.json &
+    fi
+fi
 
-sh
+wine64 $GAME_DIR/VRisingServer.exe -persistentDataPath C:\\\\saves
