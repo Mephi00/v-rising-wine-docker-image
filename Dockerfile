@@ -8,6 +8,8 @@ RUN apt install wine64 -y
 
 RUN apt install gettext-base -y
 
+RUN mkdir /saves
+
 USER steam
 
 RUN ./steamcmd.sh +@sSteamCmdForcePlatformType windows +login anonymous +app_update 1829350 validate +quit

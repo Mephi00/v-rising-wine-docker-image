@@ -1,3 +1,5 @@
+# In Development (not finished)
+
 # v-rising-wine-docker-image
 
 This docker image is supposed to run a v rising server.
@@ -48,3 +50,7 @@ It is possible to only provide one of these setting files. If this is the case, 
 ### Example files
 
 Example files can be found [here](./examples), these contain the default settings by Stunlock Studios.
+
+# Save File Location
+
+The Save folder is /saves. In order to have access to the save files for an easy backup, mount a folder to /saves.
