@@ -40,6 +40,7 @@ The server can be configured using environment variables or by providing configu
 | V_RISING_TOMB_LIMIT                  |            int            | Limit of number of Tombs in a castle              | 12            |
 | V_RISING_NEST_LIMIT                  |            int            | Limit of number of Vermite Nests in a castle      | 4             |
 | V_RISING_DEATH_CONTAINER_PERMISSIONS | "Anyone" or "ClanMembers" | Who can pick up items of a dead vampire           | "Anyone"      |
+| V_RISING_CLAN_SIZE                   |            int            | Maximum number of players in a clan               | 4             |
 
 ## Using configuration files
 
