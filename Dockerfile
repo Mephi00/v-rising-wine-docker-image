@@ -52,4 +52,11 @@ COPY ./templates /templates
 
 COPY entrypoint.sh /
 
+# Unfortunately necessary for the github build step
+USER root
+
+RUN chown steam /entrypoint.sh
+
+USER steam
+
 ENTRYPOINT [ "/entrypoint.sh" ]
