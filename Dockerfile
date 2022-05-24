@@ -50,6 +50,8 @@ ENV V_RISING_GAME_MODE="PvP"
 
 COPY ./templates /templates
 
-COPY entrypoint.sh ~/
+COPY entrypoint.sh /
 
-ENTRYPOINT [ "~/entrypoint.sh" ]
+RUN chmod +x /entrypoint.sh
+
+ENTRYPOINT [ "/entrypoint.sh" ]
