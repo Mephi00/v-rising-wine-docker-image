@@ -13,6 +13,7 @@ services:
       - V_RISING_PASSW=example password
       - V_RISING_SAVE_NAME=save1
       - V_RISING_PUBLIC_LIST=true
+      - V_RISING_SETTING_PRESET=
     ports:
       - 9876:9876/udp
       - 9877:9877/udp
