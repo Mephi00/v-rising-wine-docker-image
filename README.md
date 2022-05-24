@@ -4,6 +4,8 @@ This docker image is supposed to run a v rising server.
 At the time of writing the server is only available as a windows executable.
 This project therefore uses wine to run the server.
 
+The image is available on [docker hub (mephi00/v-rising-wine)](https://hub.docker.com/r/mephi00/v-rising-wine).
+
 # Setting up the container
 
 In order to access the Server, you need to expose the specified server port on the udp protocol. In docker this is achieved by the argument _-p \<external port>:\<internal port>/udp_. For the server to be visible on the public listing, the specified query port has to be exposed by the udp protocol as well. This is achieved the same way as described above. <br>
