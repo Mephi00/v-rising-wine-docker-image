@@ -2,7 +2,7 @@
 
 This docker image is supposed to run a v rising server.
 At the time of writing the server is only available as a windows executable.
-This project therefore uses wine to run the server executable.
+This project therefore uses wine to run the server.
 
 # Setting up the container
 
@@ -62,4 +62,5 @@ Example files can be found [here](./examples), these contain the default setting
 
 # Save File Location
 
-The Save folder is /saves. In order to have access to the save files for an easy backup, mount a folder to /saves or it's subfolders, if you know the structure.
+The Save folder is /saves. In order to have access to the save files for an easy backup, mount a folder to /saves or it's subfolders, according to V Risings folder structure.<br>
+The mount option can also be used to transfer your save files from a different installation or playthrough. For this to work be aware of the folder structure and, that the save name has to be set to your added save state.
