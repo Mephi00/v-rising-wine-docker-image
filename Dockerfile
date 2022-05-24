@@ -50,13 +50,6 @@ ENV V_RISING_GAME_MODE="PvP"
 
 COPY ./templates /templates
 
-COPY entrypoint.sh /
-
-# Unfortunately necessary for the github build step
-USER root
-
-RUN chown steam /entrypoint.sh
-
-USER steam
+COPY entrypoint.sh ~/
 
 ENTRYPOINT [ "/entrypoint.sh" ]
