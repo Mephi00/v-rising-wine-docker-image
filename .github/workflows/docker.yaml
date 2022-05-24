@@ -28,4 +28,4 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: mephi00/v-rising-wine:latest
+          tags: yeitso/v-rising-wine:latest
