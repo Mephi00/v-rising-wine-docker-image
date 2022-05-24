@@ -36,7 +36,7 @@ setServerGameSettings() {
     envsubst < /templates/ServerGameSettings.templ >> $GAME_DIR/VRisingServer_Data/StreamingAssets/Settings/ServerGameSettings.json
 }
 
-if [ -d "/var/settings" ]; then 
+if [ -d "/var/settings" ]; then
     echo "/var/settings exists"
     if [ -f "/var/settings/ServerGameSettings.json" ]; then
         cp /var/settings/ServerGameSettings.json $GAME_DIR/VRisingServer_Data/StreamingAssets/Settings/ServerGameSettings.json
@@ -57,6 +57,9 @@ else
 fi
 
 ./steamcmd.sh +@sSteamCmdForcePlatformType windows +login anonymous +app_update 1829350 validate +quit
+rm -r /tmp/.X0-lock
+
 
 cd $GAME_DIR
-xvfb-run -a wine ./VRisingServer.exe -persistentDataPath Z:\\saves
+Xvfb :0 -screen 0 1024x768x16 & \
+DISPLAY=:0.0 wine VRisingServer.exe -persistentDataPath Z:\saves

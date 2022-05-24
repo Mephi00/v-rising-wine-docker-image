@@ -4,7 +4,7 @@ USER root
 
 RUN apt update -y
 
-RUN apt install wine -y
+RUN apt install wine64 -y
 
 RUN apt install gettext-base -y
 
@@ -20,7 +20,7 @@ RUN chown steam /saves
 
 ENV DISPLAY=:99
 
-RUN winecfg
+RUN wincfg
 
 USER steam
 
