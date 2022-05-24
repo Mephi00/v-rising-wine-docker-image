@@ -1,7 +1,7 @@
 #!/bin/sh
-GAME_DIR = /home/steam/Steam/steamapps/common/VRisingDedicatedServer
+GAME_DIR=/home/steam/Steam/steamapps/common/VRisingDedicatedServer
 check_req_vars() {
-if [ -z "${V_RISING_NAME+}" ]; then
+if [ -z "${V_RISING_NAME}" ]; then
     echo "V_RISING_NAME has to be set"
 
     exit
@@ -18,21 +18,43 @@ if [ -z "${V_RISING_SAVE_NAME}" ]; then
 
     exit
 fi
+
+if [ -z "${V_RISING_PUBLIC_LIST}" ]; then
+    echo "V_RISING_PUBLIC_LIST has to be set"
+
+    exit
+fi
+}
+
+setServerHostSettings() {
+    rm $GAME_DIR/VRisingServer_Data/StreamingAssets/Settings/ServerHostSettings.json
+    envsubst < /templates/ServerHostSetting.templ >> $GAME_DIR/VRisingServer_Data/StreamingAssets/Settings/ServerHostSettings.json
+}
+
+setServerGameSettings() {
+    rm $GAME_DIR/VRisingServer_Data/StreamingAssets/Settings/ServerGameSettings.json
+    envsubst < /templates/ServerGameSettings.templ >> $GAME_DIR/VRisingServer_Data/StreamingAssets/Settings/ServerGameSettings.json
 }
 
 if [ -d "/var/settings" ]; then 
+    echo "/var/settings exists"
     if [ -f "/var/settings/ServerGameSettings.json" ]; then
         cp /var/settings/ServerGameSettings.json $GAME_DIR/VRisingServer_Data/StreamingAssets/Settings/ServerGameSettings.json
     else
-        envsubst /templates/ServerGameSettings.templ >> $GAME_DIR/VRisingServer_Data/StreamingAssets/Settings/ServerGameSettings.json &
+        setServerGameSettings
     fi
 
     if [ -f "/var/settings/ServerHostSettings.json" ]; then
         cp /var/settings/ServerHostSettings.json $GAME_DIR/VRisingServer_Data/StreamingAssets/Settings/ServerHostSettings.json
     else
         check_req_vars
-        envsubst /templates/ServerHostSetting.templ >> $GAME_DIR/VRisingServer_Data/StreamingAssets/Settings/ServerHostSettings.json &
+        setServerHostSettingss
     fi
+else
+    setServerGameSettings
+    check_req_vars
+    setServerHostSettings
 fi
 
-wine64 $GAME_DIR/VRisingServer.exe -persistentDataPath C:\\\\saves
+cd $GAME_DIR
+xvfb-run -a wine ./VRisingServer.exe -persistentDataPath Z:\\saves

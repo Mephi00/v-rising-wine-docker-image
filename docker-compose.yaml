@@ -1,0 +1,18 @@
+version: '3.7'
+
+services:
+  vrising:
+    container_name: v-rising
+    build: .
+    volumes:
+      - type: bind
+        source: ./saves
+        target: /saves
+    environment:
+      - V_RISING_NAME=example
+      - V_RISING_PASSW=example password
+      - V_RISING_SAVE_NAME=save1
+      - V_RISING_PUBLIC_LIST=true
+    ports:
+      - 9876:9876/udp
+      - 9877:9877/udp

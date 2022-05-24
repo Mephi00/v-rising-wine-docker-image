@@ -4,11 +4,23 @@ USER root
 
 RUN apt update -y
 
-RUN apt install wine64 -y
+RUN apt install wine -y
 
 RUN apt install gettext-base -y
 
+RUN apt install xvfb -y
+
+RUN apt-get install x11-utils -y
+
+RUN dpkg --add-architecture i386 && apt-get update && apt-get install wine32 -y
+
 RUN mkdir /saves
+
+RUN chown steam /saves
+
+ENV DISPLAY=:99
+
+RUN winecfg
 
 USER steam
 
