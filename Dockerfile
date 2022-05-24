@@ -20,7 +20,7 @@ RUN chown steam /saves
 
 ENV DISPLAY=:99
 
-RUN wincfg
+RUN winecfg
 
 USER steam
 
