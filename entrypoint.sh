@@ -56,5 +56,7 @@ else
     setServerHostSettings
 fi
 
+./steamcmd.sh +@sSteamCmdForcePlatformType windows +login anonymous +app_update 1829350 validate +quit
+
 cd $GAME_DIR
 xvfb-run -a wine ./VRisingServer.exe -persistentDataPath Z:\\saves
