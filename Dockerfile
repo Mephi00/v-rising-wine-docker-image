@@ -52,4 +52,4 @@ COPY ./templates /templates
 
 COPY entrypoint.sh ~/
 
-ENTRYPOINT [ "/entrypoint.sh" ]
+ENTRYPOINT [ "~/entrypoint.sh" ]
