@@ -57,8 +57,6 @@ else
 fi
 
 ./steamcmd.sh +@sSteamCmdForcePlatformType windows +login anonymous +app_update 1829350 validate +quit
-rm -r /tmp/.X0-lock
-
 
 cd $GAME_DIR
 Xvfb :0 -screen 0 1024x768x16 & \
