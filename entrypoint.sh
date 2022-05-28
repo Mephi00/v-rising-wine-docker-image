@@ -35,6 +35,7 @@ setServerHostSettings() {
     fi
 
     echo "Using env vars for ServerHostSettings"
+    rm $WRITE_DIR/ServerHostSettings.json
     envsubst < /templates/ServerHostSetting.templ >> $WRITE_DIR/ServerHostSettings.json
 }
 
@@ -46,6 +47,7 @@ setServerGameSettings() {
     fi
 
     echo "Using env vars for ServerGameSettings"
+    rm $WRITE_DIR/ServerGameSettings.json
     envsubst < /templates/ServerGameSettings.templ >> $WRITE_DIR/ServerGameSettings.json
 }
 
