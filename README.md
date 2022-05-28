@@ -38,25 +38,29 @@ The server can be configured using environment variables or by providing configu
 
 ### Variables to configure settings in ServerGameSettings.json
 
-| Variable Name                        |         Datatype          | Description                                       | Default Value |
-| ------------------------------------ | :-----------------------: | ------------------------------------------------- | :-------------: |
-| V_RISING_GAME_MODE                   |      PvP or PvE       | Whether the game is pvp or pve                    | PvP         |
-| V_RISING_MAX_HEALTH_MOD              |           float           | Modifier for the health of player characters      | 1.0           |
-| V_RISING_MAX_HEALTH_GLOBAL_MOD       |           float           | Modifier for the health of all entities           | 1.0           |
-| V_RISING_RESOURCE_YIELD_MOD          |           float           | Modifier for the resource yield                   | 1.0           |
-| V_RISING_DAY_DURATION_SECONDS        |           float           | Duration of a day in seconds                      | 1080.0        |
-| V_RISING_DAY_START_HOUR              |            int            | Hour of the (in-game) 24h day for the sun to rise | 9             |
-| V_RISING_DAY_END_HOUR                |            int            | Hour of the (in-game) 24h day for the sun to set  | 17            |
-| V_RISING_TOMB_LIMIT                  |            int            | Limit of number of Tombs in a castle              | 12            |
-| V_RISING_NEST_LIMIT                  |            int            | Limit of number of Vermite Nests in a castle      | 4             |
-| V_RISING_DEATH_CONTAINER_PERMISSIONS | Anyone or ClanMembers | Who can pick up items of a dead vampire           | Anyone      |
-| V_RISING_CLAN_SIZE                   |            int            | Maximum number of players in a clan               | 4             |
+| Variable Name                        |       Datatype        | Description                                       | Default Value |
+| ------------------------------------ | :-------------------: | ------------------------------------------------- | :-----------: |
+| V_RISING_GAME_MODE                   |      PvP or PvE       | Whether the game is pvp or pve                    |      PvP      |
+| V_RISING_MAX_HEALTH_MOD              |         float         | Modifier for the health of player characters      |      1.0      |
+| V_RISING_MAX_HEALTH_GLOBAL_MOD       |         float         | Modifier for the health of all entities           |      1.0      |
+| V_RISING_RESOURCE_YIELD_MOD          |         float         | Modifier for the resource yield                   |      1.0      |
+| V_RISING_DAY_DURATION_SECONDS        |         float         | Duration of a day in seconds                      |    1080.0     |
+| V_RISING_DAY_START_HOUR              |          int          | Hour of the (in-game) 24h day for the sun to rise |       9       |
+| V_RISING_DAY_END_HOUR                |          int          | Hour of the (in-game) 24h day for the sun to set  |      17       |
+| V_RISING_TOMB_LIMIT                  |          int          | Limit of number of Tombs in a castle              |      12       |
+| V_RISING_NEST_LIMIT                  |          int          | Limit of number of Vermite Nests in a castle      |       4       |
+| V_RISING_DEATH_CONTAINER_PERMISSIONS | Anyone or ClanMembers | Who can pick up items of a dead vampire           |    Anyone     |
+| V_RISING_CLAN_SIZE                   |          int          | Maximum number of players in a clan               |       4       |
 
 ## Using configuration files
 
 For a fully custom experience, providing your own setting files is recommended. <br>
-The files _ServerGameSettings.json_ and _ServerHostSettings.json_ must be present in the folder _/var/settings/_. <br>
-It is possible to only provide one of these setting files. If this is the case, please note that a customisation using environment variables is still possible for the file, not provided. _Please be aware, that the required variables are still required, when you do not provide the ServerHostSettings.json file._ <br><br>
+The files _ServerGameSettings.json_ and _ServerHostSettings.json_ must be present in the folder _/saves/Settings/_.
+You can mount a folder to _/saves/Settings_ or just add the _Settings_ subfolder to your _/saves_ mount. <br>
+If they aren't present, the environment variables are used for configuration.<br><br>
+Providing a settings file only partly will not work and the server will start with default settings.
+
+\***\*Please beware, when using a mix of settings files and environment variables for a configuration, that the settings will not be adjusted when changing the environment variables. If you want to change the settings accordingly, delete the file from the _/saves/Settings_ folder.\*\***
 
 ### Example files
 
@@ -64,5 +68,5 @@ Example files can be found [here](./examples), these contain the default setting
 
 # Save File Location
 
-The Save folder is /saves. In order to have access to the save files for an easy backup, mount a folder to /saves or it's subfolders, according to V Risings folder structure.<br>
+The Save folder is /saves. In order to have access to the save files for an easy backup, mount a folder to /saves, the save files are located in the _Saves_ subfolder and the configuration files are saved in the subfolder _Settings_.<br>
 The mount option can also be used to transfer your save files from a different installation or playthrough. For this to work be aware of the folder structure and, that the save name has to be set to your added save state.
