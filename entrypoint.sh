@@ -30,7 +30,7 @@ fi
 setServerHostSettings() {
     WRITE_DIR=$SETTINGS_DIR
 
-    if [ ! -d "/saves/Settings" ]; then
+    if [ -d "/saves/Settings" ]; then
         WRITE_DIR=/saves/Settings
     fi
 
@@ -41,7 +41,7 @@ setServerHostSettings() {
 setServerGameSettings() {
     WRITE_DIR=$SETTINGS_DIR
 
-    if [ ! -d "/saves/Settings" ]; then
+    if [ -d "/saves/Settings" ]; then
         WRITE_DIR=/saves/Settings
     fi
 
