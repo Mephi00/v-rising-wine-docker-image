@@ -27,8 +27,8 @@ The server can be configured using environment variables or by providing configu
 | ----------------------- | :------: | --------------------------------------------- | ---------------- |
 | V_RISING_NAME           |  string  | Name of the server                            | _Required Value_ |
 | V_RISING_SAVE_NAME      |  string  | Name of the world save                        | _Required Value_ |
-| V_RISING_PASSW          |  string  | The server password                           | _Required Value_ |
 | V_RISING_PUBLIC_LIST    | boolean  | Whether to list the server publicly           | _Required Value_ |
+| V_RISING_PASSW          |  string  | The server password                           | Empty            |
 | V_RISING_DESC           |  string  | Description of the server                     | Empty string     |
 | V_RISING_PORT           |   int    | Port of the server                            | 9876             |
 | V_RISING_QUERY_PORT     |   int    | Port für das Query Interface                  | 9877             |

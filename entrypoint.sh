@@ -8,12 +8,6 @@ if [ -z "${V_RISING_NAME}" ]; then
     exit
 fi
 
-if [ -z "${V_RISING_PASSW}" ]; then
-    echo "V_RISING_PASSW has to be set"
-
-    exit
-fi
-
 if [ -z "${V_RISING_SAVE_NAME}" ]; then
     echo "V_RISING_SAVE_NAME has to be set"
 
