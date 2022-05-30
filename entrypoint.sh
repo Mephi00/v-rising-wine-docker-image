@@ -96,4 +96,4 @@ fi
 
 
 cd $GAME_DIR
-xvfb-run -a wine ./VRisingServer.exe -persistentDataPath Z:\\saves
+Xvfb :0 -screen 0 1024x768x16 & DISPLAY=:0.0 wine VRisingServer.exe -persistentDataPath Z:\\saves
