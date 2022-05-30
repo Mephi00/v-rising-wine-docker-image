@@ -57,7 +57,7 @@ RUN chmod +x /entrypoint.sh
 
 USER steam
 
-EXPOSE 9876
-EXPOSE 9877
+EXPOSE 9876/udp
+EXPOSE 9877/udp
 
 ENTRYPOINT [ "/entrypoint.sh" ]
