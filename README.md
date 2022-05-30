@@ -8,7 +8,7 @@ The image is available on [docker hub (mephi00/v-rising-wine)](https://hub.docke
 
 # Setting up the container
 
-In order to access the Server, you need to expose the specified server port on the udp protocol. In docker this is achieved by the argument _-p \<external port>:\<internal port>/udp_. For the server to be visible on the public listing, the specified query port has to be exposed by the udp protocol as well. This is achieved the same way as described above. <br>
+In order to access the Server, you need to expose the port 9876 on the udp protocol. In docker this is achieved by the argument _-p \<external port>:9876/udp_. For the server to be visible on the public listing, the query port 9877 has to be exposed by the udp protocol as well. This is achieved the same way as described above. <br>
 Addionally, the afore mentioned ports have to be publicly exposed in your router settings.<br>
 For an example docker compose file please take a look [here](./docker-compose.yaml)
 <br>
@@ -30,8 +30,6 @@ The server can be configured using environment variables or by providing configu
 | V_RISING_PUBLIC_LIST    | boolean  | Whether to list the server publicly           | _Required Value_ |
 | V_RISING_PASSW          |  string  | The server password                           | Empty            |
 | V_RISING_DESC           |  string  | Description of the server                     | Empty string     |
-| V_RISING_PORT           |   int    | Port of the server                            | 9876             |
-| V_RISING_QUERY_PORT     |   int    | Port für das Query Interface                  | 9877             |
 | V_RISING_MAX_USER       |   int    | Num of max concurrent players                 | 40               |
 | V_RISING_MAX_ADMIN      |   int    | Num of max concurrent player using admin menu | 4                |
 | V_RISING_SETTING_PRESET |  string  | Setting preset provided by Stunlock Studios   | Empty String     |
