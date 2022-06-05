@@ -53,6 +53,8 @@ COPY entrypoint.sh /
 
 USER root
 
+RUN chown -R steam /saves
+
 RUN chmod +x /entrypoint.sh
 
 USER steam
