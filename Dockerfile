@@ -2,15 +2,19 @@ FROM cm2network/steamcmd:latest
 
 USER root
 
-RUN apt update -y
+RUN apt-get update -y
 
-RUN apt install wine -y
+RUN apt-get install wine -y
 
-RUN apt install gettext-base -y
+RUN apt-get install gettext-base -y
 
-RUN apt install xvfb -y
+RUN apt-get install xvfb -y
 
 RUN apt-get install x11-utils -y
+
+RUN apt-get install procps -y
+
+RUN apt-get install tini -y
 
 RUN dpkg --add-architecture i386 && apt-get update && apt-get install wine32 -y
 
@@ -42,6 +46,8 @@ ENV V_RISING_MAX_ADMIN=4
 ENV V_RISING_DESC=""
 ENV V_RISING_PASSW=""
 ENV V_RISING_CLAN_SIZE=4
+ENV V_RISING_PORT=9876
+ENV V_RISING_QUERY_PORT=9877
 
 ENV V_RISING_SETTING_PRESET=""
 ENV V_RISING_DEATH_CONTAINER_PERMISSIONS="Anyone"
@@ -51,13 +57,12 @@ COPY ./templates /templates
 
 COPY entrypoint.sh /
 
+COPY launch_server.sh /
+
 USER root
 
 RUN chmod +x /entrypoint.sh
 
 USER steam
-
-EXPOSE 9876/udp
-EXPOSE 9877/udp
 
 ENTRYPOINT [ "/entrypoint.sh" ]

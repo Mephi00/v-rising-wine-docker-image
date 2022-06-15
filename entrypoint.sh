@@ -1,49 +1,53 @@
 #!/bin/sh
 GAME_DIR=/home/steam/Steam/steamapps/common/VRisingDedicatedServer
 SETTINGS_DIR=$GAME_DIR/VRisingServer_Data/StreamingAssets/Settings
+
+onExit() {
+    kill -INT -$(ps -A | grep 'VRising' | awk '{print $1}') &>> /saves/wtf
+    wait $!
+}
+
 check_req_vars() {
-if [ -z "${V_RISING_NAME}" ]; then
-    echo "V_RISING_NAME has to be set"
+    if [ -z "${V_RISING_NAME}" ]; then
+        echo "V_RISING_NAME has to be set"
 
-    exit
-fi
+        exit
+    fi
 
-if [ -z "${V_RISING_SAVE_NAME}" ]; then
-    echo "V_RISING_SAVE_NAME has to be set"
+    if [ -z "${V_RISING_SAVE_NAME}" ]; then
+        echo "V_RISING_SAVE_NAME has to be set"
 
-    exit
-fi
+        exit
+    fi
 
-if [ -z "${V_RISING_PUBLIC_LIST}" ]; then
-    echo "V_RISING_PUBLIC_LIST has to be set"
+    if [ -z "${V_RISING_PUBLIC_LIST}" ]; then
+        echo "V_RISING_PUBLIC_LIST has to be set"
 
-    exit
-fi
+        exit
+    fi
 }
 
 setServerHostSettings() {
     check_req_vars
     WRITE_DIR=$SETTINGS_DIR
 
-    if [ -d "/saves/Settings" ]; then
-        WRITE_DIR=/saves/Settings
-    fi
+    # if [ -d "/saves/Settings" ]; then
+    #     WRITE_DIR=/saves/Settings
+    # fi
 
     echo "Using env vars for ServerHostSettings"
-    rm $WRITE_DIR/ServerHostSettings.json
-    envsubst < /templates/ServerHostSetting.templ >> $WRITE_DIR/ServerHostSettings.json
+    envsubst < /templates/ServerHostSetting.templ > $WRITE_DIR/ServerHostSettings.json
 }
 
 setServerGameSettings() {
     WRITE_DIR=$SETTINGS_DIR
 
-    if [ -d "/saves/Settings" ]; then
-        WRITE_DIR=/saves/Settings
-    fi
+    # if [ -d "/saves/Settings" ]; then
+    #     WRITE_DIR=/saves/Settings
+    # fi
 
     echo "Using env vars for ServerGameSettings"
-    rm $WRITE_DIR/ServerGameSettings.json
-    envsubst < /templates/ServerGameSettings.templ >> $WRITE_DIR/ServerGameSettings.json
+    envsubst < /templates/ServerGameSettings.templ > $WRITE_DIR/ServerGameSettings.json
 }
 
 createSettingsSaves() {
@@ -84,9 +88,24 @@ checkHostSettings() {
     fi
 }
 
+createAdminBanListLink() {
+    if [ ! -f "/saves/Settings/adminlist.txt" ]; then
+        cp $SETTINGS_DIR/adminlist.txt /saves/Settings/adminlist.txt
+    fi
+    if [ ! -f "/saves/Settings/banlist.txt" ]; then
+        cp $SETTINGS_DIR/banlist.txt /saves/Settings/banlist.txt
+    fi
+    rm $SETTINGS_DIR/adminlist.txt
+    rm $SETTINGS_DIR/banlist.txt
+    
+    ln -s /saves/Settings/adminlist.txt $SETTINGS_DIR/adminlist.txt
+    ln -s /saves/Settings/banlist.txt $SETTINGS_DIR/banlist.txt
+}
+
 ./steamcmd.sh +@sSteamCmdForcePlatformType windows +login anonymous +app_update 1829350 validate +quit
 
 if [ -d "/saves" ]; then
+    createAdminBanListLink
     checkGameSettings
     checkHostSettings
 else
@@ -94,6 +113,11 @@ else
     setServerHostSettings
 fi
 
+trap onExit INT TERM KILL
 
 cd $GAME_DIR
-Xvfb :0 -screen 0 1024x768x16 & DISPLAY=:0.0 wine VRisingServer.exe -persistentDataPath Z:\\saves
+Xvfb :0 -screen 0 1024x768x16 &
+setsid '/launch_server.sh' &
+
+echo $!
+wait $!
