@@ -65,6 +65,8 @@ RUN chown -R steam /saves
 
 RUN chmod +x /entrypoint.sh
 
+RUN chmod +x /launch_server.sh
+
 USER steam
 
 ENTRYPOINT [ "/entrypoint.sh" ]
