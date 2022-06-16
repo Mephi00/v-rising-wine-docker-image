@@ -63,6 +63,8 @@ USER root
 
 RUN chown -R steam /saves
 
+RUN chmod +x /launch_server.sh
+
 RUN chmod +x /entrypoint.sh
 
 USER steam
