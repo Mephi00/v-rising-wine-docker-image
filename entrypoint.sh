@@ -89,6 +89,9 @@ checkHostSettings() {
 }
 
 createAdminBanListLink() {
+    if [ ! -d "/saves/Settings"]; then
+        mkdir /saves/Settings
+    fi
     if [ ! -f "/saves/Settings/adminlist.txt" ]; then
         cp $SETTINGS_DIR/adminlist.txt /saves/Settings/adminlist.txt
     fi
