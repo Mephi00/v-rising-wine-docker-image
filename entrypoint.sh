@@ -42,10 +42,6 @@ setServerHostSettings() {
 setServerGameSettings() {
     WRITE_DIR=$SETTINGS_DIR
 
-    # if [ -d "/saves/Settings" ]; then
-    #     WRITE_DIR=/saves/Settings
-    # fi
-
     echo "Using env vars for ServerGameSettings"
     envsubst < /templates/ServerGameSettings.templ > $WRITE_DIR/ServerGameSettings.json
 }
@@ -61,7 +57,6 @@ checkGameSettings() {
     if [ ! -f "/saves/Settings/ServerGameSettings.json" ]; then
         # necessary for backwards compatabiltiy
         if [ -f "/var/settings/ServerGameSettings.json" ]; then
-            createSettingsSaves
             cp /var/settings/ServerGameSettings.json /saves/Settings/ServerGameSettings.json
         else
             setServerGameSettings
@@ -76,7 +71,6 @@ checkHostSettings() {
     if [ ! -f "/saves/Settings/ServerHostSettings.json" ]; then
         # necessary for backwards compatabiltiy
         if [ -f "/var/settings/ServerHostSettings.json" ]; then
-            createSettingsSaves
             cp /var/settings/ServerHostSettings.json /saves/Settings/ServerHostSettings.json
             checkGameSettings
         else
@@ -88,26 +82,10 @@ checkHostSettings() {
     fi
 }
 
-createAdminBanListLink() {
-    mkdir -p /saves/Settings
-    
-    if [ ! -f "/saves/Settings/adminlist.txt" ]; then
-        cp $SETTINGS_DIR/adminlist.txt /saves/Settings/adminlist.txt
-    fi
-    if [ ! -f "/saves/Settings/banlist.txt" ]; then
-        cp $SETTINGS_DIR/banlist.txt /saves/Settings/banlist.txt
-    fi
-    rm $SETTINGS_DIR/adminlist.txt
-    rm $SETTINGS_DIR/banlist.txt
-    
-    ln -s /saves/Settings/adminlist.txt $SETTINGS_DIR/adminlist.txt
-    ln -s /saves/Settings/banlist.txt $SETTINGS_DIR/banlist.txt
-}
-
 ./steamcmd.sh +@sSteamCmdForcePlatformType windows +login anonymous +app_update 1829350 validate +quit
 
 if [ -d "/saves" ]; then
-    createAdminBanListLink
+    createSettingsSaves
     checkGameSettings
     checkHostSettings
 else
