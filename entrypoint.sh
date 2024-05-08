@@ -30,6 +30,8 @@ setServerHostSettings() {
     # fi
 
     echo "Using env vars for ServerHostSettings"
+
+    VR_RCON_PASSWORD="${VR_RCON_PASSWORD:-changeme123}" \
     envsubst < /templates/ServerHostSetting.templ > $WRITE_DIR/ServerHostSettings.json
 }
 
@@ -37,6 +39,18 @@ setServerGameSettings() {
     WRITE_DIR=$SETTINGS_DIR
 
     echo "Using env vars for ServerGameSettings"
+
+    VR_GAME_MODE="${VR_GAME_MODE:-PvP}" \
+    VR_DEATH_CONTAINER_PERMISSIONS="${VR_DEATH_CONTAINER_PERMISSIONS:-Anyone}" \
+    VR_CLAN_SIZE="${VR_CLAN_SIZE:-4}" \
+    VR_DAY_DURATION_SECONDS="${VR_DAY_DURATION_SECONDS:-1080.0}" \
+    VR_DAY_START_HOUR="${VR_DAY_START_HOUR:-9}" \
+    VR_DAY_END_HOUR="${VR_DAY_END_HOUR:-16}" \
+    VR_MAX_HEALTH_MOD="${VR_MAX_HEALTH_MOD:-1.0}" \
+    VR_MAX_HEALTH_GLOBAL_MOD="${VR_MAX_HEALTH_GLOBAL_MOD:-1.0}" \
+    VR_RESOURCE_YIELD_MOD="${VR_RESOURCE_YIELD_MOD:-1.0}" \
+    VR_TOMB_LIMIT="${VR_TOMB_LIMIT:-12}" \
+    VR_NEST_LIMIT="${VR_NEST_LIMIT:-4}" \
     envsubst < /templates/ServerGameSettings.templ > $WRITE_DIR/ServerGameSettings.json
 }
 

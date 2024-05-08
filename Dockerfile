@@ -18,6 +18,8 @@ RUN apt-get install tini -y
 
 RUN dpkg --add-architecture i386 && apt-get update && apt-get install wine32 -y
 
+RUN apt-get install winbind -y
+
 RUN mkdir /saves
 
 RUN chown steam /saves
