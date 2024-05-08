@@ -11,9 +11,9 @@ services:
         target: /saves
     environment:
       # base server settings
-      - VR_NAME="maymay town"
-      - VR_PASSWORD="${VR_PASSWORD}"
-      - VR_DESCRIPTION="be nice"
+      - VR_NAME=maymay town
+      - VR_PASSWORD=${VR_PASSWORD}
+      - VR_DESCRIPTION=be nice
       - VR_SAVE_NAME=maymay1
       - VR_DIFFICULTY_PRESET=Difficulty_Normal
       - VR_ADDRESS=0.0.0.0
