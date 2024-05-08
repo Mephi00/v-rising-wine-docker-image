@@ -1,20 +1,20 @@
 ﻿{
-  "Name": "${V_RISING_NAME}",
-  "Description": "${V_RISING_DESC}",
-  "Port": ${V_RISING_PORT},
-  "QueryPort": ${V_RISING_QUERY_PORT},
-  "MaxConnectedUsers": ${V_RISING_MAX_USER},
-  "MaxConnectedAdmins": ${V_RISING_MAX_ADMIN},
+  "Name": "${VR_NAME}",
+  "Description": "${VR_DESCRIPTION}",
+  "Port": ${VR_PORT},
+  "QueryPort": ${VR_QUERY_PORT},
+  "MaxConnectedUsers": ${VR_MAX_USERS},
+  "MaxConnectedAdmins": ${VR_MAX_ADMINS},
   "ServerFps": 30,
-  "SaveName": "${V_RISING_SAVE_NAME}",
-  "Password": "${V_RISING_PASSW}",
+  "SaveName": "${VR_SAVE_NAME}",
+  "Password": "${VR_PASSWORD}",
   "Secure": true,
-  "ListOnSteam": ${V_RISING_PUBLIC_LIST},
-  "ListOnEOS": ${V_RISING_PUBLIC_LIST},
+  "ListOnSteam": ${VR_LIST_ON_STEAM},
+  "ListOnEOS": ${VR_LIST_ON_EOS},
   "AutoSaveCount": 20,
   "AutoSaveInterval": 120,
   "CompressSaveFiles": true,
-  "GameSettingsPreset": "${V_RISING_SETTING_PRESET}",
+  "GameSettingsPreset": "${VR_SETTING_PRESET}",
   "GameDifficultyPreset": "",
   "AdminOnlyDebugEvents": true,
   "DisableDebugEvents": false,
@@ -24,6 +24,6 @@
   "Rcon": {
     "Enabled": true,
     "Port": 25575,
-    "Password": "${VR_RCON_PASSWORD}"
+    "Password": "${VR_RCON_PASSWORD:-changeme123}"
   }
 }
