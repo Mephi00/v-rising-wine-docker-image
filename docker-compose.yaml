@@ -1,4 +1,4 @@
-version: '3.7'
+version: "3.7"
 
 services:
   vrising:
@@ -9,12 +9,13 @@ services:
         source: ./saves
         target: /saves
     environment:
+      # base server settings
       - V_RISING_NAME="maymay town"
-      - VR_PASSWORD=""
-      - VR_DESCRIPTION="be nice"
+      - V_RISING_PASSW="${V_RISING_PASSW}"
+      - V_RISING_DESC="be nice"
       - V_RISING_SAVE_NAME=maymay1
       - V_RISING_PUBLIC_LIST=true
-      # - V_RISING_SETTING_PRESET=
+      - V_RISING_SETTING_PRESET=
       - VR_DIFFICULTY_PRESET=Difficulty_Normal
       - VR_ADDRESS=0.0.0.0
       - VR_SAVE_COUNT=100
@@ -25,13 +26,14 @@ services:
       - VR_MAX_ADMINS=4
       - VR_MAX_USERS=40
       - VR_HIDEIPADDRESS=true
-      - VR_FPS=30
       - VR_LOWER_FPS_WHEN_EMPTY=true
       - VR_LOWER_FPS_WHEN_EMPTY_VALUE=5
-      - VR_RCON_PASSWORD=nottellingyouthat
+      - VR_RCON_PASSWORD=${VR_RCON_PASSWORD}
       - VR_LIST_ON_STEAM=true
       - VR_LIST_ON_EOS=true
       - VR_SECURE=true
+      # game tweaks
+      - V_RISING_RESOURCE_YIELD_MOD=2.0
     ports:
       - 9876:9876/udp
       - 9877:9877/udp

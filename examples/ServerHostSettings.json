@@ -9,10 +9,21 @@
   "SaveName": "world1",
   "Password": "",
   "Secure": true,
-  "ListOnMasterServer": true,
-  "AutoSaveCount": 50,
-  "AutoSaveInterval": 600,
+  "ListOnSteam": false,
+  "ListOnEOS": false,
+  "AutoSaveCount": 20,
+  "AutoSaveInterval": 120,
+  "CompressSaveFiles": true,
   "GameSettingsPreset": "",
+  "GameDifficultyPreset": "",
   "AdminOnlyDebugEvents": true,
-  "DisableDebugEvents": false
+  "DisableDebugEvents": false,
+  "API": {
+    "Enabled": false
+  },
+  "Rcon": {
+    "Enabled": false,
+    "Port": 25575,
+    "Password": ""
+  }
 }
