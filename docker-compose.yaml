@@ -11,7 +11,7 @@ services:
         target: /saves
     environment:
       # base server settings
-      - VR_NAME=maymay town
+      - VR_NAME=maymay town - 2.5x resource yield, slow decay
       - VR_PASSWORD=${VR_PASSWORD}
       - VR_DESCRIPTION=be nice
       - VR_SAVE_NAME=maymay1
@@ -32,7 +32,9 @@ services:
       - VR_LIST_ON_EOS=true
       - VR_SECURE=true
       # game tweaks
-      - VR_RESOURCE_YIELD_MOD=2.0
+      - VR_RESOURCE_YIELD_MOD=2.5
+      - VR_ESSENCE_DRAIN_MOD=0.2
+      - VR_ESSENCE_YIELD_MOD=2.5
     ports:
       - 9876:9876/udp
       - 9877:9877/udp
