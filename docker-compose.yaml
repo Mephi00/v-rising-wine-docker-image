@@ -4,6 +4,7 @@ services:
   vrising:
     container_name: v-rising
     build: .
+    restart: unless-stopped
     volumes:
       - type: bind
         source: ./saves

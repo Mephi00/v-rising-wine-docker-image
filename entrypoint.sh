@@ -8,20 +8,14 @@ onExit() {
 }
 
 check_req_vars() {
-    if [ -z "${V_RISING_NAME}" ]; then
-        echo "V_RISING_NAME has to be set"
+    if [ -z "${VR_NAME}" ]; then
+        echo "VR_NAME has to be set"
 
         exit
     fi
 
-    if [ -z "${V_RISING_SAVE_NAME}" ]; then
-        echo "V_RISING_SAVE_NAME has to be set"
-
-        exit
-    fi
-
-    if [ -z "${V_RISING_PUBLIC_LIST}" ]; then
-        echo "V_RISING_PUBLIC_LIST has to be set"
+    if [ -z "${VR_SAVE_NAME}" ]; then
+        echo "VR_SAVE_NAME has to be set"
 
         exit
     fi
