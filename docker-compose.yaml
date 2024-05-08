@@ -3,17 +3,35 @@ version: '3.7'
 services:
   vrising:
     container_name: v-rising
-    image: mephi00/v-rising-wine
+    build: .
     volumes:
       - type: bind
         source: ./saves
         target: /saves
     environment:
-      - V_RISING_NAME=example test
-      - V_RISING_PASSW=example password
-      - V_RISING_SAVE_NAME=save1
+      - V_RISING_NAME="maymay town"
+      - VR_PASSWORD=""
+      - VR_DESCRIPTION="be nice"
+      - V_RISING_SAVE_NAME=maymay1
       - V_RISING_PUBLIC_LIST=true
-      - V_RISING_SETTING_PRESET=
+      # - V_RISING_SETTING_PRESET=
+      - VR_DIFFICULTY_PRESET=Difficulty_Normal
+      - VR_ADDRESS=0.0.0.0
+      - VR_SAVE_COUNT=100
+      - VR_RESET_DAYS_INTERVAL=0
+      - VR_GAME_PORT=27015
+      - VR_QUERY_PORT=27016
+      - VR_RCON_PORT=25575
+      - VR_MAX_ADMINS=4
+      - VR_MAX_USERS=40
+      - VR_HIDEIPADDRESS=true
+      - VR_FPS=30
+      - VR_LOWER_FPS_WHEN_EMPTY=true
+      - VR_LOWER_FPS_WHEN_EMPTY_VALUE=5
+      - VR_RCON_PASSWORD=nottellingyouthat
+      - VR_LIST_ON_STEAM=true
+      - VR_LIST_ON_EOS=true
+      - VR_SECURE=true
     ports:
       - 9876:9876/udp
       - 9877:9877/udp
