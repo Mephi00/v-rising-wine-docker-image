@@ -19,8 +19,8 @@ services:
       - VR_ADDRESS=0.0.0.0
       - VR_SAVE_COUNT=100
       - VR_RESET_DAYS_INTERVAL=0
-      - VR_GAME_PORT=27015
-      - VR_QUERY_PORT=27016
+      - VR_GAME_PORT=9876
+      - VR_QUERY_PORT=9877
       - VR_RCON_PORT=25575
       - VR_MAX_ADMINS=4
       - VR_MAX_USERS=40
@@ -36,3 +36,7 @@ services:
     ports:
       - 9876:9876/udp
       - 9877:9877/udp
+      # - 27015:27015/tcp
+      # - 27015:27015/udp
+      # - 27015:27016/tcp
+      # - 27015:27016/udp
