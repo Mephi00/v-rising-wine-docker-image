@@ -2,6 +2,12 @@
 GAME_DIR=/home/steam/Steam/steamapps/common/VRisingDedicatedServer
 SETTINGS_DIR=$GAME_DIR/VRisingServer_Data/StreamingAssets/Settings
 
+cat >$SETTINGS_DIR/adminlist.txt <<EOL
+${VR_ADMIN_STEEAMID_1}
+${VR_ADMIN_STEEAMID_2}
+${VR_ADMIN_STEEAMID_3}
+EOL
+
 onExit() {
     kill -INT -$(ps -A | grep 'VRising' | awk '{print $1}') &>> /saves/wtf
     wait $!

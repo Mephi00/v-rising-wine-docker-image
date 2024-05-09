@@ -19,22 +19,27 @@ services:
       - VR_ADDRESS=${VR_ADDRESS}
       - VR_SAVE_COUNT=100
       - VR_RESET_DAYS_INTERVAL=0
-      - VR_GAME_PORT=9876
-      - VR_QUERY_PORT=9877
-      - VR_RCON_PORT=25575
+      - VR_GAME_PORT=27020
+      - VR_QUERY_PORT=27021
+      - VR_RCON_PORT=27022
+      - VR_API_PORT=27023
       - VR_MAX_ADMINS=4
       - VR_MAX_USERS=40
       - VR_HIDEIPADDRESS=true
       - VR_LOWER_FPS_WHEN_EMPTY=true
       - VR_LOWER_FPS_WHEN_EMPTY_VALUE=5
       - VR_RCON_PASSWORD=${VR_RCON_PASSWORD}
-      - VR_LIST_ON_STEAM=true
+      - VR_LIST_ON_STEAM=false
       - VR_LIST_ON_EOS=true
       - VR_SECURE=true
       # game tweaks
       - VR_RESOURCE_YIELD_MOD=2.5
       - VR_ESSENCE_DRAIN_MOD=0.2
       - VR_ESSENCE_YIELD_MOD=2.5
+      # admins
+      - VR_ADMIN_STEEAMID_1=${VR_ADMIN_STEEAMID_1}
+      - VR_ADMIN_STEEAMID_2=${VR_ADMIN_STEEAMID_2}
+      - VR_ADMIN_STEEAMID_3=${VR_ADMIN_STEEAMID_3}
     ports:
       - 9876:9876/udp
       - 9877:9877/udp
