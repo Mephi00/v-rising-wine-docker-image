@@ -9,7 +9,6 @@ services:
       - type: bind
         source: ./saves
         target: /saves
-    network_mode: host
     environment:
       # base server settings
       - VR_NAME=maymay town - 2.5x resource yield, slow decay
@@ -45,9 +44,13 @@ services:
       - 9876:9876/udp
       - 9877:9877/udp
       - 27020:27020/udp
+      - 27020:27020/tcp
       - 27021:27021/udp
+      - 27021:27021/tcp
       - 27022:27022/udp
+      - 27022:27022/tcp
       - 27023:27023/udp
+      - 27023:27023/tcp
 
       # - 27015:27015/tcp
       # - 27015:27015/udp

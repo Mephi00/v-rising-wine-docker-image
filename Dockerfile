@@ -69,6 +69,15 @@ RUN chmod +x /launch_server.sh
 
 RUN chmod +x /entrypoint.sh
 
+EXPOSE 27020/udp
+EXPOSE 27020/tcp
+EXPOSE 27021/udp
+EXPOSE 27021/tcp
+EXPOSE 27022/udp
+EXPOSE 27022/tcp
+EXPOSE 27023/udp
+EXPOSE 27023/tcp
+
 USER steam
 
 ENTRYPOINT [ "/entrypoint.sh" ]
