@@ -16,7 +16,7 @@ services:
       - VR_DESCRIPTION=be nice
       - VR_SAVE_NAME=maymay1
       - VR_DIFFICULTY_PRESET=Difficulty_Normal
-      - VR_ADDRESS=0.0.0.0
+      - VR_ADDRESS=${VR_ADDRESS}
       - VR_SAVE_COUNT=100
       - VR_RESET_DAYS_INTERVAL=0
       - VR_GAME_PORT=9876
