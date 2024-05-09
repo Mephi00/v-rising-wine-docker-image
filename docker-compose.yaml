@@ -9,6 +9,7 @@ services:
       - type: bind
         source: ./saves
         target: /saves
+    network_mode: host
     environment:
       # base server settings
       - VR_NAME=maymay town - 2.5x resource yield, slow decay
@@ -16,7 +17,7 @@ services:
       - VR_DESCRIPTION=be nice
       - VR_SAVE_NAME=maymay1
       - VR_DIFFICULTY_PRESET=Difficulty_Normal
-      - VR_ADDRESS=${VR_ADDRESS}
+      # - VR_ADDRESS=${VR_ADDRESS}
       - VR_SAVE_COUNT=100
       - VR_RESET_DAYS_INTERVAL=0
       - VR_GAME_PORT=27020
@@ -25,9 +26,9 @@ services:
       - VR_API_PORT=27023
       - VR_MAX_ADMINS=4
       - VR_MAX_USERS=40
-      - VR_HIDEIPADDRESS=true
-      - VR_LOWER_FPS_WHEN_EMPTY=true
-      - VR_LOWER_FPS_WHEN_EMPTY_VALUE=5
+      - VR_HIDEIPADDRESS=false
+      - VR_LOWER_FPS_WHEN_EMPTY=false
+      - VR_LOWER_FPS_WHEN_EMPTY_VALUE=30
       - VR_RCON_PASSWORD=${VR_RCON_PASSWORD}
       - VR_LIST_ON_STEAM=false
       - VR_LIST_ON_EOS=true
@@ -43,6 +44,11 @@ services:
     ports:
       - 9876:9876/udp
       - 9877:9877/udp
+      - 27020:27020/udp
+      - 27021:27021/udp
+      - 27022:27022/udp
+      - 27023:27023/udp
+
       # - 27015:27015/tcp
       # - 27015:27015/udp
       # - 27015:27016/tcp
