@@ -18,6 +18,8 @@ RUN apt-get install tini -y
 
 RUN dpkg --add-architecture i386 && apt-get update && apt-get install wine32 -y
 
+RUN apt-get install winbind -y
+
 RUN mkdir /saves
 
 RUN chown steam /saves
@@ -66,6 +68,15 @@ RUN chown -R steam /saves
 RUN chmod +x /launch_server.sh
 
 RUN chmod +x /entrypoint.sh
+
+EXPOSE 27020/udp
+EXPOSE 27020/tcp
+EXPOSE 27021/udp
+EXPOSE 27021/tcp
+EXPOSE 27022/udp
+EXPOSE 27022/tcp
+EXPOSE 27023/udp
+EXPOSE 27023/tcp
 
 USER steam
 

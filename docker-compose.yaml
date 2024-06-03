@@ -1,19 +1,61 @@
-version: '3.7'
+version: "3.7"
 
 services:
   vrising:
     container_name: v-rising
-    image: mephi00/v-rising-wine
+    build: .
+    restart: unless-stopped
     volumes:
       - type: bind
         source: ./saves
         target: /saves
     environment:
-      - V_RISING_NAME=example test
-      - V_RISING_PASSW=example password
-      - V_RISING_SAVE_NAME=save1
-      - V_RISING_PUBLIC_LIST=true
-      - V_RISING_SETTING_PRESET=
+      # base server settings
+      - VR_NAME=maymay town - 2.5x resource yield, slow decay
+      - VR_PASSWORD=${VR_PASSWORD}
+      - VR_DESCRIPTION=be nice
+      - VR_SAVE_NAME=maymay1
+      - VR_DIFFICULTY_PRESET=Difficulty_Normal
+      # - VR_ADDRESS=${VR_ADDRESS}
+      - VR_SAVE_COUNT=100
+      - VR_RESET_DAYS_INTERVAL=0
+      - VR_GAME_PORT=27020
+      - VR_QUERY_PORT=27021
+      - VR_RCON_PORT=27022
+      - VR_API_PORT=27023
+      - VR_MAX_ADMINS=4
+      - VR_MAX_USERS=40
+      - VR_HIDEIPADDRESS=false
+      - VR_LOWER_FPS_WHEN_EMPTY=false
+      - VR_LOWER_FPS_WHEN_EMPTY_VALUE=30
+      - VR_RCON_PASSWORD=${VR_RCON_PASSWORD}
+      - VR_LIST_ON_STEAM=false
+      - VR_LIST_ON_EOS=true
+      - VR_SECURE=true
+      # game tweaks
+      - VR_RESOURCE_YIELD_MOD=2.5
+      - VR_ESSENCE_DRAIN_MOD=0.2
+      - VR_ESSENCE_YIELD_MOD=2.5
+      - VR_TELEPORT_BOUND_ITEMS=false
+      - VR_ALL_WAYPOINTS_UNLOCKED=true
+      - VR_INVENTORY_STACKS_MULTIPLIER=4.0
+      # admins
+      - VR_ADMIN_STEEAMID_1=${VR_ADMIN_STEEAMID_1}
+      - VR_ADMIN_STEEAMID_2=${VR_ADMIN_STEEAMID_2}
+      - VR_ADMIN_STEEAMID_3=${VR_ADMIN_STEEAMID_3}
     ports:
       - 9876:9876/udp
       - 9877:9877/udp
+      - 27020:27020/udp
+      - 27020:27020/tcp
+      - 27021:27021/udp
+      - 27021:27021/tcp
+      - 27022:27022/udp
+      - 27022:27022/tcp
+      - 27023:27023/udp
+      - 27023:27023/tcp
+
+      # - 27015:27015/tcp
+      # - 27015:27015/udp
+      # - 27015:27016/tcp
+      # - 27015:27016/udp
