@@ -4,6 +4,7 @@ services:
   vrising:
     container_name: v-rising
     build: .
+    # image: mephi00/v-rising-wine:latest
     restart: unless-stopped
     volumes:
       - type: bind
@@ -11,7 +12,7 @@ services:
         target: /saves
     environment:
       # base server settings
-      - VR_NAME=maymay town - 2.5x resource yield, slow decay
+      - VR_NAME=pekeirazzzzzzzzzzz
       - VR_PASSWORD=${VR_PASSWORD}
       - VR_DESCRIPTION=be nice
       - VR_SAVE_NAME=maymay1
@@ -19,10 +20,6 @@ services:
       # - VR_ADDRESS=${VR_ADDRESS}
       - VR_SAVE_COUNT=100
       - VR_RESET_DAYS_INTERVAL=0
-      - VR_GAME_PORT=27020
-      - VR_QUERY_PORT=27021
-      - VR_RCON_PORT=27022
-      - VR_API_PORT=27023
       - VR_MAX_ADMINS=4
       - VR_MAX_USERS=40
       - VR_HIDEIPADDRESS=false
@@ -46,14 +43,14 @@ services:
     ports:
       - 9876:9876/udp
       - 9877:9877/udp
-      - 27020:27020/udp
-      - 27020:27020/tcp
-      - 27021:27021/udp
-      - 27021:27021/tcp
-      - 27022:27022/udp
-      - 27022:27022/tcp
-      - 27023:27023/udp
-      - 27023:27023/tcp
+      # - 27020:27020/udp
+      # - 27020:27020/tcp
+      # - 27021:27021/udp
+      # - 27021:27021/tcp
+      # - 27022:27022/udp
+      # - 27022:27022/tcp
+      # - 27023:27023/udp
+      # - 27023:27023/tcp
 
       # - 27015:27015/tcp
       # - 27015:27015/udp
