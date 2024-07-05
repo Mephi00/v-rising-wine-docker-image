@@ -24,34 +24,37 @@ The server can be configured using environment variables or by providing configu
 
 ### Variables to configure Settings in ServerHostSettings.json
 
-| Variable Name           | Datatype | Description                                   | Default Value    |
-| ----------------------- | :------: | --------------------------------------------- | ---------------- |
-| V_RISING_NAME           |  string  | Name of the server                            | _Required Value_ |
-| V_RISING_SAVE_NAME      |  string  | Name of the world save                        | _Required Value_ |
-| V_RISING_PUBLIC_LIST    | boolean  | Whether to list the server publicly           | _Required Value_ |
-| V_RISING_PORT           |   int    | Port of the server                            | 9876             |
-| V_RISING_QUERY_PORT     |   int    | Port für das Query Interface                  | 9877             |
-| V_RISING_PASSW          |  string  | The server password                           | Empty            |
-| V_RISING_DESC           |  string  | Description of the server                     | Empty string     |
-| V_RISING_MAX_USER       |   int    | Num of max concurrent players                 | 40               |
-| V_RISING_MAX_ADMIN      |   int    | Num of max concurrent player using admin menu | 4                |
-| V_RISING_SETTING_PRESET |  string  | Setting preset provided by Stunlock Studios   | Empty String     |
+| Variable Name     | Datatype | Description                                              | Default Value    |
+| ----------------- | :------: | -------------------------------------------------------- | ---------------- |
+| VR_NAME           |  string  | Name of the server                                       | _Required Value_ |
+| VR_SAVE_NAME      |  string  | Name of the world save                                   | _Required Value_ |
+| VR_LIST_ON_EOS    | boolean  | Whether to list the server in the in-game server browser | false            |
+| VR_LIST_ON_STEAM  | boolean  | Whether to list the server in steam                      | false            |
+| VR_GAME_PORT      |   int    | Port of the server                                       | 9876             |
+| VR_QUERY_PORT     |   int    | Port für das Query Interface                             | 9877             |
+| VR_PASSWORD       |  string  | The server password                                      | Empty string     |
+| VR_DESCRIPTION    |  string  | Description of the server                                | Empty string     |
+| VR_MAX_USERS      |   int    | Num of max concurrent players                            | 40               |
+| VR_MAX_ADMINS     |   int    | Num of max concurrent player using admin menu            | 4                |
+| VR_SETTING_PRESET |  string  | Setting preset provided by Stunlock Studios              | Empty String     |
+| VR_ENABLE_RCON    | boolean  | Whether to enable RCON access to the server              | false            |
+| VR_RCON_PASSWORD  |  string  | Password for the RCON access                             | Empty Sring      |
 
 ### Variables to configure settings in ServerGameSettings.json
 
-| Variable Name                        |       Datatype        | Description                                       | Default Value |
-| ------------------------------------ | :-------------------: | ------------------------------------------------- | :-----------: |
-| V_RISING_GAME_MODE                   |      PvP or PvE       | Whether the game is pvp or pve                    |      PvP      |
-| V_RISING_MAX_HEALTH_MOD              |         float         | Modifier for the health of player characters      |      1.0      |
-| V_RISING_MAX_HEALTH_GLOBAL_MOD       |         float         | Modifier for the health of all entities           |      1.0      |
-| V_RISING_RESOURCE_YIELD_MOD          |         float         | Modifier for the resource yield                   |      1.0      |
-| V_RISING_DAY_DURATION_SECONDS        |         float         | Duration of a day in seconds                      |    1080.0     |
-| V_RISING_DAY_START_HOUR              |          int          | Hour of the (in-game) 24h day for the sun to rise |       9       |
-| V_RISING_DAY_END_HOUR                |          int          | Hour of the (in-game) 24h day for the sun to set  |      17       |
-| V_RISING_TOMB_LIMIT                  |          int          | Limit of number of Tombs in a castle              |      12       |
-| V_RISING_NEST_LIMIT                  |          int          | Limit of number of Vermite Nests in a castle      |       4       |
-| V_RISING_DEATH_CONTAINER_PERMISSIONS | Anyone or ClanMembers | Who can pick up items of a dead vampire           |    Anyone     |
-| V_RISING_CLAN_SIZE                   |          int          | Maximum number of players in a clan               |       4       |
+| Variable Name                  |       Datatype        | Description                                       | Default Value |
+| ------------------------------ | :-------------------: | ------------------------------------------------- | :-----------: |
+| VR_GAME_MODE                   |      PvP or PvE       | Whether the game is pvp or pve                    |      PvP      |
+| VR_MAX_HEALTH_MOD              |         float         | Modifier for the health of player characters      |      1.0      |
+| VR_MAX_HEALTH_GLOBAL_MOD       |         float         | Modifier for the health of all entities           |      1.0      |
+| VR_RESOURCE_YIELD_MOD          |         float         | Modifier for the resource yield                   |      1.0      |
+| VR_DAY_DURATION_SECONDS        |         float         | Duration of a day in seconds                      |    1080.0     |
+| VR_DAY_START_HOUR              |          int          | Hour of the (in-game) 24h day for the sun to rise |       9       |
+| VR_DAY_END_HOUR                |          int          | Hour of the (in-game) 24h day for the sun to set  |      17       |
+| VR_TOMB_LIMIT                  |          int          | Limit of number of Tombs in a castle              |      12       |
+| VR_NEST_LIMIT                  |          int          | Limit of number of Vermite Nests in a castle      |       4       |
+| VR_DEATH_CONTAINER_PERMISSIONS | Anyone or ClanMembers | Who can pick up items of a dead vampire           |    Anyone     |
+| VR_CLAN_SIZE                   |          int          | Maximum number of players in a clan               |       4       |
 
 ## Using configuration files
 
