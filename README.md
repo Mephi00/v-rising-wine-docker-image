@@ -31,7 +31,7 @@ The server can be configured using environment variables or by providing configu
 | VR_LIST_ON_EOS    | boolean  | Whether to list the server in the in-game server browser | false            |
 | VR_LIST_ON_STEAM  | boolean  | Whether to list the server in steam                      | false            |
 | VR_GAME_PORT      |   int    | Port of the server                                       | 9876             |
-| VR_QUERY_PORT     |   int    | Port für das Query Interface                             | 9877             |
+| VR_QUERY_PORT     |   int    | Port for the Query Interface                             | 9877             |
 | VR_PASSWORD       |  string  | The server password                                      | Empty string     |
 | VR_DESCRIPTION    |  string  | Description of the server                                | Empty string     |
 | VR_MAX_USERS      |   int    | Num of max concurrent players                            | 40               |
