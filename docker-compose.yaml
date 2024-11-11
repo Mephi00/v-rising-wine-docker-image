@@ -12,7 +12,7 @@ services:
         target: /saves
     environment:
       # base server settings
-      - VR_NAME=pekeirazzzzzzzzzzz
+      - VR_NAME=My Fancy Server
       - VR_PASSWORD=${VR_PASSWORD}
       - VR_DESCRIPTION=be nice
       - VR_SAVE_NAME=maymay1
